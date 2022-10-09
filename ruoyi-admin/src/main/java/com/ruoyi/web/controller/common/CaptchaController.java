@@ -28,12 +28,13 @@ import com.ruoyi.system.service.ISysConfigService;
 @RestController
 public class CaptchaController
 {
+//    创建验证码
     @Resource(name = "captchaProducer")
     private Producer captchaProducer;
-
+// 创建数字验证码
     @Resource(name = "captchaProducerMath")
     private Producer captchaProducerMath;
-
+// 验证码存入redis
     @Autowired
     private RedisCache redisCache;
     
@@ -45,7 +46,9 @@ public class CaptchaController
     @GetMapping("/captchaImage")
     public AjaxResult getCode(HttpServletResponse response) throws IOException
     {
+//        验证码发往前端
         AjaxResult ajax = AjaxResult.success();
+//        获取验证码是否开启,在applicationh中配置
         boolean captchaEnabled = configService.selectCaptchaEnabled();
         ajax.put("captchaEnabled", captchaEnabled);
         if (!captchaEnabled)
