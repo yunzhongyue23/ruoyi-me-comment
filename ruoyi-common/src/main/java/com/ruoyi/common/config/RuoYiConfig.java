@@ -25,6 +25,7 @@ public class RuoYiConfig
     private boolean demoEnabled;
 
     /** 上传路径 */
+//    从yml文件中获取
     private static String profile;
 
     /** 获取地址开关 */
