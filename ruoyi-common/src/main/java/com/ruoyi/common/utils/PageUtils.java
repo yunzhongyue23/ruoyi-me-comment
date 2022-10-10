@@ -17,11 +17,17 @@ public class PageUtils extends PageHelper
      */
     public static void startPage()
     {
+//        构建分页请求
         PageDomain pageDomain = TableSupport.buildPageRequest();
+//        页码
         Integer pageNum = pageDomain.getPageNum();
+//        每页显示条说
         Integer pageSize = pageDomain.getPageSize();
+//        检查字符防止sql注入
         String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());
+//        分页合理化
         Boolean reasonable = pageDomain.getReasonable();
+//        设置是否分页合理化
         PageHelper.startPage(pageNum, pageSize, orderBy).setReasonable(reasonable);
     }
 

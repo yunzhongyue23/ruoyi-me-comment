@@ -1,4 +1,5 @@
 <template>
+<!--  设置分页组件是否隐藏,-->
   <div :class="{'hidden':hidden}" class="pagination-container">
     <el-pagination
       :background="background"
@@ -78,6 +79,7 @@ export default {
       get() {
         return this.limit
       },
+      // 同步到父组件
       set(val) {
         this.$emit('update:limit', val)
       }

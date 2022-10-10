@@ -28,10 +28,12 @@ import com.ruoyi.common.utils.sql.SqlUtil;
  */
 public class BaseController
 {
+//    拿到日志
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * 将前台传递过来的日期格式的字符串，自动转化为Date类型
+     * 初始化数据绑定,大概是json 转化 javaBean对象之类的
      */
     @InitBinder
     public void initBinder(WebDataBinder binder)
