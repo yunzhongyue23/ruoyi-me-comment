@@ -6,7 +6,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 /**
  * druid 配置属性
- * 
+ * 项目一启动就会从druid中获取配置
  * @author ruoyi
  */
 @Configuration

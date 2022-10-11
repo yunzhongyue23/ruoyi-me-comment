@@ -4,10 +4,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 读取项目相关配置
+ * 读取项目相关配置,
  * 
  * @author ruoyi
  */
+//以后如果想要获取若依配置里面的内容就从这个文件里获取.
 @Component
 @ConfigurationProperties(prefix = "ruoyi")
 public class RuoYiConfig

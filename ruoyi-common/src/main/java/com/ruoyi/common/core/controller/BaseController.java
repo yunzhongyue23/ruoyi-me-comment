@@ -26,6 +26,7 @@ import com.ruoyi.common.utils.sql.SqlUtil;
  * 
  * @author ruoyi
  */
+//基础controller
 public class BaseController
 {
 //    拿到日志

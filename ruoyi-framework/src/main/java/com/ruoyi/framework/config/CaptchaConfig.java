@@ -12,13 +12,23 @@ import static com.google.code.kaptcha.Constants.*;
  * 
  * @author ruoyi
  */
+
+/*
+
+*如何写一个验证码:
+    1.引入依赖
+    2.写一个配置类
+ */
 @Configuration
 public class CaptchaConfig
 {
+//    图片验证码
     @Bean(name = "captchaProducer")
     public DefaultKaptcha getKaptchaBean()
     {
+//        导入第三方依赖
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+//        properties对象,存放验证码的各个属性
         Properties properties = new Properties();
         // 是否有边框 默认为true 我们可以自己设置yes，no
         properties.setProperty(KAPTCHA_BORDER, "yes");
@@ -38,11 +48,14 @@ public class CaptchaConfig
         properties.setProperty(KAPTCHA_TEXTPRODUCER_FONT_NAMES, "Arial,Courier");
         // 图片样式 水纹com.google.code.kaptcha.impl.WaterRipple 鱼眼com.google.code.kaptcha.impl.FishEyeGimpy 阴影com.google.code.kaptcha.impl.ShadowGimpy
         properties.setProperty(KAPTCHA_OBSCURIFICATOR_IMPL, "com.google.code.kaptcha.impl.ShadowGimpy");
+//        创建一个配置对象,
         Config config = new Config(properties);
+//        配置好的各个属性添加到验证码里面.
         defaultKaptcha.setConfig(config);
         return defaultKaptcha;
     }
 
+//    数学验证码
     @Bean(name = "captchaProducerMath")
     public DefaultKaptcha getKaptchaBeanMath()
     {

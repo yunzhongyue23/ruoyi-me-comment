@@ -20,8 +20,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class ApplicationConfig
 {
     /**
-     * 时区配置
+     * 时区配置,
+     *
      */
+//    数据库中指定的时区.
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jacksonObjectMapperCustomization()
     {

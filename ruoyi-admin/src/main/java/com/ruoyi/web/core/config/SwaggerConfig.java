@@ -27,14 +27,20 @@ import springfox.documentation.spring.web.plugins.Docket;
  * 
  * @author ruoyi
  */
+/*
+使用swagger的步骤:
+    1.引入依赖
+    2.创建一个swagger的配置类
+    3.如果是一个动态配置,则可以在application.yml中进行配置
+* */
 @Configuration
 public class SwaggerConfig
 {
     /** 系统基础配置 */
-//    配置文件里几个常用的属性
+
     @Autowired
     private RuoYiConfig ruoyiConfig;
-
+//    重application.yml中加载属性
     /** 是否开启swagger */
     @Value("${swagger.enabled}")
     private boolean enabled;
@@ -46,6 +52,7 @@ public class SwaggerConfig
     /**
      * 创建API
      */
+//    大致可以理解为创建了一个页面
     @Bean
     public Docket createRestApi()
     {

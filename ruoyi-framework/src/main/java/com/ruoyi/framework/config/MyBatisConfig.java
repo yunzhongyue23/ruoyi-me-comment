@@ -32,9 +32,10 @@ import com.ruoyi.common.utils.StringUtils;
 @Configuration
 public class MyBatisConfig
 {
+//    项目启动之后扫描这个
     @Autowired
     private Environment env;
-
+//默认的资源路径
     static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
 
     public static String setTypeAliasesPackage(String typeAliasesPackage)
@@ -116,9 +117,12 @@ public class MyBatisConfig
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception
     {
+//        搜索指定包别名
         String typeAliasesPackage = env.getProperty("mybatis.typeAliasesPackage");
+//        配置mapper的扫描,找到所有的mapper.xml文件
         String mapperLocations = env.getProperty("mybatis.mapperLocations");
         String configLocation = env.getProperty("mybatis.configLocation");
+//        加载全局的配置文件
         typeAliasesPackage = setTypeAliasesPackage(typeAliasesPackage);
         VFS.addImplClass(SpringBootVFS.class);
 
