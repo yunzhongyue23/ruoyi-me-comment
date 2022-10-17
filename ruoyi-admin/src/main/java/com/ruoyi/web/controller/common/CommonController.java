@@ -32,9 +32,10 @@ public class CommonController
 {
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
+//    服务配置相关
     @Autowired
     private ServerConfig serverConfig;
-
+//文件分割符
     private static final String FILE_DELIMETER = ",";
 
     /**
@@ -48,16 +49,23 @@ public class CommonController
     {
         try
         {
+//            检查是否允许下载
             if (!FileUtils.checkAllowDownload(fileName))
             {
+//                抛出错误文件名称非法,不允许下载
                 throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 ", fileName));
             }
+//            根据当前时间戳生成一个文件名
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
+//            获取下载路径
             String filePath = RuoYiConfig.getDownloadPath() + fileName;
-
+//          设置响应类型是 八进制流
             response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+//            设置附件响应头
             FileUtils.setAttachmentResponseHeader(response, realFileName);
+//          输出流数据转到文件中
             FileUtils.writeBytes(filePath, response.getOutputStream());
+//            删除文件
             if (delete)
             {
                 FileUtils.deleteFile(filePath);
@@ -81,8 +89,11 @@ public class CommonController
             String filePath = RuoYiConfig.getUploadPath();
             // 上传并返回新文件名称
             String fileName = FileUploadUtils.upload(filePath, file);
+//            拿到完整的URL拼接文件名
             String url = serverConfig.getUrl() + fileName;
+//            声明返回的ajax响应结果
             AjaxResult ajax = AjaxResult.success();
+
             ajax.put("url", url);
             ajax.put("fileName", fileName);
             ajax.put("newFileName", FileUtils.getName(fileName));
@@ -128,6 +139,7 @@ public class CommonController
         }
         catch (Exception e)
         {
+//            返回错误响应
             return AjaxResult.error(e.getMessage());
         }
     }

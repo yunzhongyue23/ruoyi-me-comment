@@ -40,16 +40,23 @@ public class FileUtils
         FileInputStream fis = null;
         try
         {
+//            新建文件对象
             File file = new File(filePath);
+//            如果文件不存在
             if (!file.exists())
             {
+//                抛出文件找不到错误
                 throw new FileNotFoundException(filePath);
             }
+//            根据文件新建文件输入流
             fis = new FileInputStream(file);
+//            建立文件缓冲区
             byte[] b = new byte[1024];
+//            声明每次读取文件的长度
             int length;
             while ((length = fis.read(b)) > 0)
             {
+//                写入该长度的数据
                 os.write(b, 0, length);
             }
         }
@@ -59,6 +66,7 @@ public class FileUtils
         }
         finally
         {
+//            关流
             IOUtils.close(os);
             IOUtils.close(fis);
         }

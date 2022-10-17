@@ -20,6 +20,7 @@ public class ServerController
     @GetMapping()
     public AjaxResult getInfo() throws Exception
     {
+//        服务器相关的对象
         Server server = new Server();
         server.copyTo();
         return AjaxResult.success(server);

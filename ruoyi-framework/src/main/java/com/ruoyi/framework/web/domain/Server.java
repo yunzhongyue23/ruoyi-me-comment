@@ -107,17 +107,19 @@ public class Server
 
     public void copyTo() throws Exception
     {
+// 获取系统信息
         SystemInfo si = new SystemInfo();
+//        创建适用于特定平台的新实例
         HardwareAbstractionLayer hal = si.getHardware();
-
+//           设置cpu信息
         setCpuInfo(hal.getProcessor());
-
+//  设置内存信息
         setMemInfo(hal.getMemory());
 
         setSysInfo();
-
+// 设置JVM 信息
         setJvmInfo();
-
+//  拿到操作系统
         setSysFiles(si.getOperatingSystem());
     }
 
