@@ -79,8 +79,11 @@ public class SysLoginController
     @GetMapping("getRouters")
     public AjaxResult getRouters()
     {
+//        从security上下文之中取出用户id,
         Long userId = SecurityUtils.getUserId();
+//        根据用户id从数据库中取出用户的权限
         List<SysMenu> menus = menuService.selectMenuTreeByUserId(userId);
+//        把所有的权限封装起来返回给前端
         return AjaxResult.success(menuService.buildMenus(menus));
     }
 }
