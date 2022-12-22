@@ -33,7 +33,7 @@ import com.ruoyi.system.domain.SysOperLog;
  * 
  * @author ruoyi
  */
-@Aspect
+@Aspect   //给日志添加切面
 @Component
 public class LogAspect
 {
